@@ -8,3 +8,5 @@
     envVars:
       - key: SENKORE6_HOST
         value: 0.0.0.0
+      - key: SENKORE6_PASSWORD
+        sync: false
