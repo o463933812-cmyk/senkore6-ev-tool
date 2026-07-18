@@ -8,9 +8,9 @@ ROOT = Path(__file__).resolve().parent
 HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 1127943
-INDEX_SHA256 = "4dc6988f85d89be96a65fa4173cc9965edacfff06e87ff72b249480f5f67cd5c"
-APP_VERSION = "2026-07-18-senkore6-v8-closing-hist-only"
+INDEX_SIZE = 1128068
+INDEX_SHA256 = "c16e42e708a854bed1e8e8a1f9cf34945d79de09d780d6016eb8ed361ab8fd43"
+APP_VERSION = "2026-07-18-senkore6-v9-exchange-winrate"
 AUTH_COOKIE_NAME = "senkore6_auth"
 SESSION_COOKIE = f"{AUTH_COOKIE_NAME}={secrets.token_urlsafe(24)}"
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "")
