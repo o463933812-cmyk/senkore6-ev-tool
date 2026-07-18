@@ -1,0 +1,10 @@
+﻿services:
+  - type: web
+    name: senkore6-ev-tool
+    env: python
+    plan: starter
+    buildCommand: ""
+    startCommand: python senkore6_tool_server.py
+    envVars:
+      - key: SENKORE6_HOST
+        value: 0.0.0.0
