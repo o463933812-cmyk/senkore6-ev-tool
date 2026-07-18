@@ -16,4 +16,4 @@
 ## 確認URL
 
 - `/healthz` が `ok` を返すこと
-- `/` のレスポンスヘッダー `X-App-Version` が `2026-07-18-senkore6-v4` であること
+- `/` のレスポンスヘッダー `X-App-Version` が `2026-07-18-senkore6-v14-final-sample-condition-ev` であること
