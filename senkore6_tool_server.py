@@ -12,8 +12,8 @@ HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 899146
-INDEX_SHA256 = "31fd14f083c0a950ee097066ef944c3505a3b87d9a0831dda8c0d42b79295714"
+INDEX_SIZE = 898835
+INDEX_SHA256 = "1b51c0cce08b29e7f4e6dbd304e1f2a1008396bcd116a948cf15e447dc8a5358"
 APP_VERSION = "2026-07-19-senkore6-v16-rescue-aim"
 _cached = None
 
