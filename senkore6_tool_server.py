@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 import hashlib
 import os
 import time
@@ -12,9 +12,9 @@ HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 1426241
-INDEX_SHA256 = "b2b381c5bfa03f4e8044feefee4bcdd29d4b1a0741e17f229c021a17d72cf1fc"
-APP_VERSION = "2026-07-19-senkore6-v19-rescue-prev-filters"
+INDEX_SIZE = 999761
+INDEX_SHA256 = "4fa332a8e91a8f897a813f2d63bfa459361dc9e2ee3c0fea0148ca92a9f3fd43"
+APP_VERSION = "2026-07-19-senkore6-v23-rescue-label-fix"
 _cached = None
 
 def load_index():
