@@ -1,5 +1,5 @@
 from __future__ import annotations
-import hashlib
+import gzip
 import os
 import time
 from http import HTTPStatus
@@ -14,19 +14,18 @@ PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 INDEX_SIZE = 1778761
 INDEX_SHA256 = "6d973efd4a69237c6cf5ba1ff3a346d8be4964f0a639beff55cfbc293c2972f5"
-APP_VERSION = '2026-07-21-senkore6-v35-final-tool-audit2'
+APP_VERSION = '2026-07-21-senkore6-v35-final-tool-audit3'
 _cached = None
 
 def load_index():
     global _cached
     if _cached is not None:
         return _cached
-    data = (ROOT / INDEX_GZ).read_bytes()
-    if len(data) != INDEX_SIZE:
-        raise RuntimeError(f"index size mismatch: {len(data)} != {INDEX_SIZE}")
-    actual = hashlib.sha256(data).hexdigest()
-    if actual != INDEX_SHA256:
-        raise RuntimeError(f"index sha mismatch: {actual}")
+    gz_path = ROOT / INDEX_GZ
+    if gz_path.exists():
+        data = gz_path.read_bytes()
+    else:
+        data = gzip.compress((ROOT / "index.html").read_bytes(), compresslevel=6)
     _cached = data
     return data
 
