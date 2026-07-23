@@ -12,9 +12,9 @@ HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 3262896
-INDEX_SHA256 = "ae43448595e224b46784ddbb09cbf41035be6de972a10fcbaad8baf404749d91"
-APP_VERSION = '2026-07-23-senkore6-prevty-g-set-cross'
+INDEX_SIZE = 19304004
+INDEX_SHA256 = "628a0d6fe168d21a44fd7f31b5a8a05e82ca37f0612aeede85e6fc4c9e8d167e"
+APP_VERSION = "2026-07-24-senkore6-mixed-max-high104"
 _cached = None
 
 def load_index():
@@ -31,7 +31,7 @@ def load_index():
 
 def page_login(msg=""):
     err = f"<p style='color:#c00'>{msg}</p>" if msg else ""
-    notice = "<p style='font-size:13px;line-height:1.7;color:#444;margin:10px 0 14px'>本ツールは購入者限定です。無断転載・コピー・再配布（URL・パスワード共有、画面内容・算出結果の共有を含む）は禁止しています。発見した場合は、販売停止・法的措置を含む対応を行う場合があります。</p>"
+    notice = "<p style='font-size:13px;line-height:1.7;color:#444;margin:10px 0 14px'>本ツールは購入者限定です。無断転載、コピー、再配布、URL・パスワードの共有、画面内容・計算結果の共有を含む行為は禁止しています。発見した場合は販売停止・法的措置を含む対応を行う場合があります。</p>"
     return f"""<!doctype html><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>login</title><body style='font-family:sans-serif;display:grid;place-items:center;min-height:100vh;background:#eef0f3'><form method='post' action='/login' style='background:white;border:1px solid #222;box-shadow:4px 4px 0 #999;padding:20px;min-width:280px;max-width:360px'><h1 style='font-size:20px;margin:0 0 8px'>戦コレ6 期待値ツール</h1>{notice}{err}<input name='password' type='password' placeholder='password' autofocus style='width:100%;font-size:18px;padding:8px;box-sizing:border-box'><button style='margin-top:12px;width:100%;font-size:16px;padding:8px'>開く</button></form></body>""".encode("utf-8")
 
 class Handler(BaseHTTPRequestHandler):
