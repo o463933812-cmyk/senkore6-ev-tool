@@ -14,7 +14,7 @@ PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 INDEX_SIZE = 3025228
 INDEX_SHA256 = "06f4c150180f5f2b69b8123f198cc7181786826f6409f695e57a7eb8433ec96b"
-APP_VERSION = '2026-07-23-senkore6-prev-g2-sets-selectable'
+APP_VERSION = '2026-07-23-senkore6-hourly-practical-display'
 _cached = None
 
 def load_index():
