@@ -12,9 +12,9 @@ HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 3079600
-INDEX_SHA256 = "5e878b5df0c0ec91b77ba744bd5b2daff99f8ba30f8ada8284c0bb9b898d46d9"
-APP_VERSION = '2026-07-23-senkore6-equal-rate-hourly-practical-only'
+INDEX_SIZE = 3025494
+INDEX_SHA256 = "365255eb54ca8d7d3488522f2c7a9411fbe26b40c978146ad199559c7d23690c"
+APP_VERSION = '2026-07-23-senkore6-prev-seed-wide-ev'
 _cached = None
 
 def load_index():
