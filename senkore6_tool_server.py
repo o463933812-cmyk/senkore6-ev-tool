@@ -13,10 +13,10 @@ PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 HIST_GZ = "senkore6_hist.json.gz"
-INDEX_SIZE = 6204318
+INDEX_SIZE = 6211717
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
-INDEX_SHA256 = "b7a697c04a2b2baa47d6c54ed6dda647c59ad0068a49dd42ad60cfc7e1a1958b"
+INDEX_SHA256 = "3ee042ae43ba652778ef9f3b358f9f2bb3cdc417fd146859a85b74d1634d06c6"
 APP_VERSION = '2026-07-25-senkore6-prev1001-split-routes'
 _cached = None
 
