@@ -12,9 +12,12 @@ HOST = os.environ.get("SENKORE6_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
-INDEX_SIZE = 19304004
-INDEX_SHA256 = "628a0d6fe168d21a44fd7f31b5a8a05e82ca37f0612aeede85e6fc4c9e8d167e"
-APP_VERSION = "2026-07-24-senkore6-mixed-max-high104"
+HIST_GZ = "senkore6_hist.json.gz"
+INDEX_SIZE = 1067483
+HIST_SIZE = 17637845
+HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
+INDEX_SHA256 = "cbc5e6b91dc01b6fa279ec4845ccdd504b5727adab75ff3be5839746bf135155"
+APP_VERSION = "2026-07-24-senkore6-mixed-high104-lazyhist"
 _cached = None
 
 def load_index():
@@ -31,8 +34,8 @@ def load_index():
 
 def page_login(msg=""):
     err = f"<p style='color:#c00'>{msg}</p>" if msg else ""
-    notice = "<p style='font-size:13px;line-height:1.7;color:#444;margin:10px 0 14px'>本ツールは購入者限定です。無断転載、コピー、再配布、URL・パスワードの共有、画面内容・計算結果の共有を含む行為は禁止しています。発見した場合は販売停止・法的措置を含む対応を行う場合があります。</p>"
-    return f"""<!doctype html><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>login</title><body style='font-family:sans-serif;display:grid;place-items:center;min-height:100vh;background:#eef0f3'><form method='post' action='/login' style='background:white;border:1px solid #222;box-shadow:4px 4px 0 #999;padding:20px;min-width:280px;max-width:360px'><h1 style='font-size:20px;margin:0 0 8px'>戦コレ6 期待値ツール</h1>{notice}{err}<input name='password' type='password' placeholder='password' autofocus style='width:100%;font-size:18px;padding:8px;box-sizing:border-box'><button style='margin-top:12px;width:100%;font-size:16px;padding:8px'>開く</button></form></body>""".encode("utf-8")
+    notice = "<p style='font-size:13px;line-height:1.7;color:#444;margin:10px 0 14px'>\u672c\u30c4\u30fc\u30eb\u306f\u8cfc\u5165\u8005\u9650\u5b9a\u3067\u3059\u3002\u7121\u65ad\u8ee2\u8f09\u3001\u30b3\u30d4\u30fc\u3001\u518d\u914d\u5e03\u3001URL\u30fb\u30d1\u30b9\u30ef\u30fc\u30c9\u306e\u5171\u6709\u3001\u753b\u9762\u5185\u5bb9\u30fb\u8a08\u7b97\u7d50\u679c\u306e\u5171\u6709\u3092\u542b\u3080\u884c\u70ba\u306f\u7981\u6b62\u3057\u3066\u3044\u307e\u3059\u3002\u767a\u898b\u3057\u305f\u5834\u5408\u306f\u8ca9\u58f2\u505c\u6b62\u30fb\u6cd5\u7684\u63aa\u7f6e\u3092\u542b\u3080\u5bfe\u5fdc\u3092\u884c\u3046\u5834\u5408\u304c\u3042\u308a\u307e\u3059\u3002</p>"
+    return f"""<!doctype html><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>login</title><body style='font-family:sans-serif;display:grid;place-items:center;min-height:100vh;background:#eef0f3'><form method='post' action='/login' style='background:white;border:1px solid #222;box-shadow:4px 4px 0 #999;padding:20px;min-width:280px;max-width:360px'><h1 style='font-size:20px;margin:0 0 8px'>\u6226\u30b3\u30ec6 \u671f\u5f85\u5024\u30c4\u30fc\u30eb</h1>{notice}{err}<input name='password' type='password' placeholder='password' autofocus style='width:100%;font-size:18px;padding:8px;box-sizing:border-box'><button style='margin-top:12px;width:100%;font-size:16px;padding:8px'>\u958b\u304f</button></form></body>""".encode("utf-8")
 
 class Handler(BaseHTTPRequestHandler):
     server_version = "Senkore6EV/1.0"
@@ -58,10 +61,21 @@ class Handler(BaseHTTPRequestHandler):
             return
         body = load_index()
         self.send_blob(HTTPStatus.OK, [("Content-Type", "text/html; charset=utf-8"), ("Content-Encoding", "gzip"), ("Content-Length", str(len(body))), ("Cache-Control", "no-store"), ("X-App-Version", APP_VERSION)], body, head_only)
+
+    def serve_hist(self, head_only=False):
+        if not self.has_auth():
+            self.send_response(302)
+            self.send_header("Location", "/login")
+            self.end_headers()
+            return
+        body = (ROOT / HIST_GZ).read_bytes()
+        self.send_blob(HTTPStatus.OK, [("Content-Type", "application/json; charset=utf-8"), ("Content-Encoding", "gzip"), ("Content-Length", str(len(body))), ("Cache-Control", "no-store"), ("X-App-Version", APP_VERSION)], body, head_only)
     def do_HEAD(self):
         path = urlsplit(self.path).path or "/"
         if path in ("/", "/index.html"):
             self.serve_index(True)
+        elif path == "/senkore6_hist.json":
+            self.serve_hist(True)
         elif path == "/healthz":
             self.send_blob(HTTPStatus.OK, [("Content-Type", "text/plain"), ("X-App-Version", APP_VERSION)], b"ok", True)
         else:
@@ -70,6 +84,8 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path or "/"
         if path in ("/", "/index.html"):
             self.serve_index(False)
+        elif path == "/senkore6_hist.json":
+            self.serve_hist(False)
         elif path == "/login":
             self.send_blob(HTTPStatus.OK, [("Content-Type", "text/html; charset=utf-8")], page_login())
         elif path == "/healthz":
