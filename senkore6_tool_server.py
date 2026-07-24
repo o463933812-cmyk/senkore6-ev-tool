@@ -13,10 +13,10 @@ PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 HIST_GZ = "senkore6_hist.json.gz"
-INDEX_SIZE = 6115884
+INDEX_SIZE = 6115892
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
-INDEX_SHA256 = "88df13b0205c9e83cd17ae5d049a2486d31623348e9d0e6e15e745c3b1d5cfe9"
+INDEX_SHA256 = "854872634bbc0c495fe76248dd6a120c00ac3d91551f3ce35e74d4000dfe7c62"
 APP_VERSION = '2026-07-24-senkore6-mixed-high104-tailclamp-excluded'
 _cached = None
 
