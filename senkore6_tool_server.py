@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 import gzip
 import os
 import time
@@ -13,11 +13,11 @@ PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 HIST_GZ = "senkore6_hist.json.gz"
-INDEX_SIZE = 36486742
+INDEX_SIZE = 7990621
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
-INDEX_SHA256 = "0146aa1227f978c84625685c591cc869de380c8742e3f9c18f5c6afef555f668"
-APP_VERSION = "2026-07-26-senkore6-prevty-diff-history-cross-edlike-v2"
+INDEX_SHA256 = "e8ac159ab3394172c0f029485ee953efaaf4e426114df1c19dd83c2879556c31"
+APP_VERSION = "2026-07-27-senkore6-prevty-diff-history-cross-segment-diff-v5-prevty1001-only"
 _cached = None
 
 def load_index():
@@ -111,3 +111,4 @@ if __name__ == "__main__":
     server = ThreadingHTTPServer((HOST, PORT), Handler)
     print(f"serving on {HOST}:{PORT} version={APP_VERSION}")
     server.serve_forever()
+
