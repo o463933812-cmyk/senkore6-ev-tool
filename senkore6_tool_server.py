@@ -13,11 +13,11 @@ PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 HIST_GZ = "senkore6_hist.json.gz"
-INDEX_SIZE = 8257795
+INDEX_SIZE = 8268698
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
-INDEX_SHA256 = "a3ab6df31f7eabf35c14180f49f3f9e14cc1384702abf4ef3e2b5b62dfe46e8d"
-APP_VERSION = "2026-07-27-senkore6-interval-filter-fix-v1"
+INDEX_SHA256 = "442f70c6ecfd70450a8d74404bfc24ef0f713bc30b1bd7c722c2d41301279f5e"
+APP_VERSION = "2026-07-27-senkore6-prev1001-diff2300-safety-v1"
 _cached = None
 
 def load_index():
