@@ -17,7 +17,7 @@ INDEX_SIZE = 8428659
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
 INDEX_SHA256 = "4b65a83cbf1ff2afcef2c3f1e9c6b5e94081c7334538eb7034fa304b3df1a995"
-APP_VERSION = "2026-07-27-senkore6-upper-state-once-through-v1"
+APP_VERSION = "2026-07-27-senkore6-zero-hit-row-display-filter-v1"
 _cached = None
 
 def load_index():
