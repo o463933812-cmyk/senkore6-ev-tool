@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 import gzip
 import os
 import time
@@ -13,10 +13,10 @@ PORT = int(os.environ.get("SENKORE6_PORT") or os.environ.get("PORT") or "8796")
 PASSWORD = os.environ.get("SENKORE6_PASSWORD", "nobunaga")
 INDEX_GZ = "senkore6_tool_index.html.gz"
 HIST_GZ = "senkore6_hist.json.gz"
-INDEX_SIZE = 8425186
+INDEX_SIZE = 8592704
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
-INDEX_SHA256 = "d4d9232b76d860aa2aaefe922bb8fd02791827e3150237ab7d82dcb48f63c167"
+INDEX_SHA256 = "2b9bd201898efd6570159f61d5eeba70ddccb4805d55328af42e8d9c5aebc22f"
 APP_VERSION = "2026-07-27-senkore6-follow-closing-skip-v1"
 _cached = None
 
