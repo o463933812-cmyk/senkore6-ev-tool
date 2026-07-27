@@ -17,7 +17,7 @@ INDEX_SIZE = 8425186
 HIST_SIZE = 17637845
 HIST_SHA256 = "48526166fc42d8cf61a23832bd4b8683658c9331ea27a6e429d8c373cfd4d7d5"
 INDEX_SHA256 = "d4d9232b76d860aa2aaefe922bb8fd02791827e3150237ab7d82dcb48f63c167"
-APP_VERSION = "2026-07-27-senkore6-cycle-follow-all-routes-v1"
+APP_VERSION = "2026-07-27-senkore6-follow-closing-skip-v1"
 _cached = None
 
 def load_index():
